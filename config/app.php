@@ -187,7 +187,7 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
     'domains' => [
-        'admin' => env('ADMIN_DOMAIN', 'admin.sparklesoftware.co.uk'),
+        'admin' => env('ADMIN_DOMAIN', 'admin.sparklessoftware.co.uk'),
     ],
 
 
