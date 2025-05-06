@@ -1,0 +1,10 @@
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+}
+/* Remove box shadows from all elements */
+* {
+    box-shadow: none !important;
+}
+
