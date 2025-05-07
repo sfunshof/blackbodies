@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', [AppController::class, 'index'])->name('refLogin');
 //This is the actual production one
 if (config('app.env') === 'production') {
     Route::domain(config('app.domains.admin'))->group(function () {
@@ -28,3 +27,4 @@ if (config('app.env') === 'production') {
 } else if (config('app.env') === 'local') {
     Route::get('/admin', [AppController::class, 'index_admin'])->name('appLogin');
 }
+Route::get('/', [AppController::class, 'index'])->name('refLogin');
