@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\ResetPasswordViewResponse;
+use App\Http\Responses\CustomResetPasswordViewResponse; // Create this
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,7 @@ class FortifyServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        
     }
 
     /**
@@ -28,6 +31,20 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
+        $this->app->singleton(
+            ResetPasswordViewResponse::class,
+            CustomResetPasswordViewResponse::class
+        );
+        
+        Fortify::resetPasswordView(function (Request $request) {
+            dump('reset1'); // <- This should now be hit
+            return redirect()->route('resetPassword', [
+                'token' => $request->route('token'),
+                'email' => $request->email,
+            ]);
+        });
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);

@@ -34,16 +34,15 @@
                                 <input type="password" class="form-control" wire:model.live="password"  placeholder="Enter your password">
                                 @error('password') <span class="small text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @if (!$isAdmin)
-                                <div class="mb-1 text-center"  @click="$wire.$parent.show_forgotPage();">
+                          
+                                <div  class="mb-1 text-center"  @click="$wire.$parent.show_forgotPage();">
                                     <span class="text-decoration-none text-success">Forgot Password?</span>
                                 </div>
-                                <div class="mb-3 text-center" @click="$wire.$parent.show_registerPage();">
+                                <div   class="mb-3 text-center" @click="$wire.$parent.show_registerPage();">
                                     <span class="text-decoration-none text-success">Sign Up</span>
                                 </div>
-                            @endif    
-
-                            <div class="d-grid">
+                            
+                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary"  wire:loading.attr="disabled" wire:target="login">Login In</button>
                             </div>
                         </form>

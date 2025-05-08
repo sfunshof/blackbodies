@@ -10,8 +10,12 @@ class Blm extends Component
     public $isRegister=false;
     public $isForgot=false;
     public $isContents=false;
+    //
+    public $token;
+    public $email;
+    public $isPasswordReset;
     
-    public  $isAdmin; //
+    public  $isAdmin =false; //
   
     private function initLogin(){
         $this->isLogin=false;
@@ -35,9 +39,17 @@ class Blm extends Component
         $this->initLogin();
         $this->isContents=true;
     }
-    
-    public function mount($isAdmin = null){
+    public function update_resetVariable(){
+        $this->isPasswordReset=false;
+        $this->isAdmin=false;
+        sleep(4);
+    }
+    public function mount($isAdmin = null, $email=null, $token=null,$isPasswordReset=null){
         $this->isAdmin = $isAdmin;
+        $this->email=$email;
+        $this->token=$token;
+        $this->isPasswordReset=$isPasswordReset;
+        if ($this->isPasswordReset) $this->isLogin=false;
     }
      public function render(){
         return view('livewire.blm');

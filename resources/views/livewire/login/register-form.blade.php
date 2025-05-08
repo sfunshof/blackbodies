@@ -37,7 +37,7 @@
                                 @error('password_confirmation') <span class="small text-danger">{{ $message }}</span> @enderror
                             </div>
 
-                            <div class="mb-3 text-center" @click="$wire.$parent.show_loginPage();">
+                            <div class="mb-3 text-center" wire:click="$parent.show_loginPage();">
                                 <span class="text-decoration-none text-success">Already registered? Login here</span>
                             </div>
 

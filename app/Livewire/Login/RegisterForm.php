@@ -107,4 +107,7 @@ class RegisterForm extends Component
         return view('livewire.login.register-form');
 
     }
+    public function test(){
+        dump("test");
+    }
 }

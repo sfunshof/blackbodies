@@ -6,8 +6,14 @@
     </head>
     <body>
         <!-- Navbar and contents -->
-         <livewire:blm  :isAdmin=$isAdmin />
-         @include('inc.foot')
+        @php
+            $token = $token ?? '';
+            $email = $email ?? '';
+            $isAdmin = $isAdmin ?? 'false';
+            $isPasswordReset = $isPasswordReset ?? false;
+        @endphp
+        <livewire:blm  :isAdmin="$isAdmin"  :token="$token" :email="$email" :isPasswordReset="$isPasswordReset" />
+        @include('inc.foot')
     </body>
 
 </html>

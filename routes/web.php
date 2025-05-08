@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,8 @@ if (config('app.env') === 'production') {
     Route::get('/admin', [AppController::class, 'index_admin'])->name('appLogin');
 }
 Route::get('/', [AppController::class, 'index'])->name('refLogin');
+
+Route::get('/reset-password/{token}', function (Request $request, $token) {
+    $email = $request->input('email');
+    return view('appPage', ['token' => $token, 'email' => $email, 'isPasswordReset' =>true]);
+})->name('password.reset');

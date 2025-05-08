@@ -13,7 +13,7 @@ class LoginForm extends Component
     public $errorMessage = '';
     public $successMessage = '';
 
-    public $isAdmin;
+    public $isAdmin =true;
 
     // Define validation rules
     protected $rules = [
@@ -70,7 +70,7 @@ class LoginForm extends Component
         $this->dispatch('completeLogin');
     }
 
-    public function mount($isAdmin = null){
+    public function mount($isAdmin = false){
         $this->isAdmin = $isAdmin;
     }
     public function render()

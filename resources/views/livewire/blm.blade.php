@@ -1,9 +1,12 @@
 <div>
     <div x-data="blmData">
-        
+        <div x-show="isPasswordReset" x-cloak>
+            <livewire:login.passwordreset-form  :token="$token"  :email="$email" />
+       </div>
+
         <div x-show="login" x-cloak>
-            <livewire:login.login-form  :isAdmin=$isAdmin />
-        </div>
+              <livewire:login.login-form  :isAdmin=$isAdmin />
+         </div>
 
         <div x-show="forgot" x-cloak>
             <livewire:login.forgot-form>
@@ -19,6 +22,7 @@
     @script
         <script>
             Alpine.data('blmData', () => ({
+                isPasswordReset: $wire.entangle('isPasswordReset'),
                 login: $wire.entangle('isLogin'),
                 forgot:  $wire.entangle('isForgot'),
                 register:  $wire.entangle('isRegister'),
