@@ -30,6 +30,10 @@ class PasswordresetForm extends Component
         $this->token = $token;
         $this->email = $email ?? request()->query('email');
     }
+    public function updated($propertyName)
+    {
+        $this->resetErrorBag($propertyName);
+    }
 
     public function resetPassword(){
         $this->isSubmitting = true;
